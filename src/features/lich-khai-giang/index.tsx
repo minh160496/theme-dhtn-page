@@ -7,8 +7,8 @@ export const LichKg = () => {
   return (
     <LayoutNganh title="Lịch khai giảng Đại học Thái Nguyên - E learning">
       <BoxTest
-        title="Cập nhật lịch khai giảng dự kiến"
-        list={[
+        title1="Cập nhật lịch khai giảng dự kiến"
+        list1={[
           "Tại Hà Nội: 15/10",
           "Tại Thái Nguyên: 08/10",
           "Tại Hồ Chí Minh: 01/10",
