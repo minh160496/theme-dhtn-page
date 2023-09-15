@@ -1,5 +1,5 @@
+import { Providers } from "@/components/provider";
 import Layout from "@/layouts";
-import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
@@ -16,9 +16,9 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
     <>
-      <ChakraProvider>
+      <Providers>
         <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-      </ChakraProvider>
+      </Providers>
     </>
   );
 };

@@ -3,7 +3,7 @@
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Posts } from "@/features/posts";
 
-export const getServerSideProps = async (context: any) => {
+export const getStaticProps = async (context: any) => {
   const { query } = context;
 
   const page = query?.page || "1";

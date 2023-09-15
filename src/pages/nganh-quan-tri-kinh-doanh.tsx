@@ -3,15 +3,15 @@
 import { Loading } from "@/components/Loading";
 import dynamic from "next/dynamic";
 
-const CntpTa = dynamic(
-  () => import("@/features/nganh-cntp-ta").then((mod) => mod.CntpTa),
+const Qtkd = dynamic(
+  () => import("@/features/nganh-qtkd").then((mod) => mod.Qtkd),
   {
     loading: () => <Loading />,
   }
 );
 
 const Page = () => {
-  return <CntpTa />;
+  return <Qtkd />;
 };
 
 export default Page;

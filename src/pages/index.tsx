@@ -37,11 +37,11 @@ interface IHomepage {
 const Page = (props: IHomepage) => {
   const { posts } = props;
   return (
-    <main>
+    <>
       <ErrorBoundary fallback={<Loading />}>
         <Home posts={posts || []} />
       </ErrorBoundary>
-    </main>
+    </>
   );
 };
 

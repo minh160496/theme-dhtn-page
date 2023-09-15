@@ -3,15 +3,15 @@
 import { Loading } from "@/components/Loading";
 import dynamic from "next/dynamic";
 
-const NnCnc = dynamic(
-  () => import("@/features/nganh-nn-cnc").then((mod) => mod.NnCnc),
+const Lkt = dynamic(
+  () => import("@/features/nganh-lkt").then((mod) => mod.Lkt),
   {
     loading: () => <Loading />,
   }
 );
 
 const Page = () => {
-  return <NnCnc />;
+  return <Lkt />;
 };
 
 export default Page;

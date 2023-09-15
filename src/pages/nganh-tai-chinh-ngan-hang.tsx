@@ -3,15 +3,15 @@
 import { Loading } from "@/components/Loading";
 import dynamic from "next/dynamic";
 
-const Kdxnk = dynamic(
-  () => import("@/features/nganh-kdxnk").then((mod) => mod.Kdxnk),
+const Tcnh = dynamic(
+  () => import("@/features/nganh-tcnh").then((mod) => mod.Tcnh),
   {
     loading: () => <Loading />,
   }
 );
 
 const Page = () => {
-  return <Kdxnk />;
+  return <Tcnh />;
 };
 
 export default Page;

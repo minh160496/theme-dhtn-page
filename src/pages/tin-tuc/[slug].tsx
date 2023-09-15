@@ -7,7 +7,7 @@ import { ReactElement } from "react";
 
 const api_url = process.env.API_URL || "";
 
-export const getServerSideProps = async (context: any) => {
+export const getStaticProps = async (context: any) => {
   try {
     const params = context.params;
     const slug = params?.slug || "";

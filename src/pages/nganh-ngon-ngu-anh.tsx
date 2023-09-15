@@ -3,15 +3,15 @@
 import { Loading } from "@/components/Loading";
 import dynamic from "next/dynamic";
 
-const Cntp = dynamic(
-  () => import("@/features/nganh-cntp").then((mod) => mod.Cntp),
+const Nna = dynamic(
+  () => import("@/features/nganh-nna").then((mod) => mod.Nna),
   {
     loading: () => <Loading />,
   }
 );
 
 const Page = () => {
-  return <Cntp />;
+  return <Nna />;
 };
 
 export default Page;
