@@ -1,9 +1,9 @@
+import ErrorBoundary from "@/components/ErrorBoundary";
+import { Loading } from "@/components/Loading";
 import { Home } from "@/features/home";
 
-const getPost = async () => {};
-
 export const getServerSideProps = async () => {
-  const api_url = "https://eaof.vn/wp-json/wp/v2";
+  const api_url = process.env.API_URL || "";
   const res = await fetch(
     `${api_url}/posts?_embed&per_page=3&status=publish&page=1`,
     {
@@ -28,11 +28,22 @@ export const getServerSideProps = async () => {
   return { props: { errorCode, posts: postsWithFeaturedImages, totalPosts } };
 };
 
-export default function Page(props: any) {
+interface IHomepage {
+  errorCode: number | boolean;
+  posts: any[];
+  totalPosts: string | null;
+}
+
+const Page = (props: IHomepage) => {
+  const { posts } = props;
   console.log(props);
   return (
     <main>
-      <Home posts={props.posts || []} />
+      <ErrorBoundary fallback={<Loading />}>
+        <Home posts={posts || []} />
+      </ErrorBoundary>
     </main>
   );
-}
+};
+
+export default Page;
