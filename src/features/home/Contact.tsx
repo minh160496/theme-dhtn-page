@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { AiFillStar } from "react-icons/ai";
 import { FormContact } from "../../components/FormContact";
+import styles from "@/styles/Home.module.css";
 
 const HeadSection = ({
   subtitle,
@@ -105,8 +106,8 @@ export const Contact = () => {
       </Container>
 
       {/* Animate  */}
-      <Box className="area" bg={"green.700"} w={"100%"}>
-        <List className="circles">
+      <Box className={styles["area"]} bg={"green.700"} w={"100%"}>
+        <List className={styles["circles"]}>
           <ListItem />
           <ListItem />
           <ListItem />
