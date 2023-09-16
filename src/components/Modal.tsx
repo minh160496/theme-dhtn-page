@@ -22,9 +22,9 @@ export const ModalBase = (props: IModalBase) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bg={"transparent"} shadow={"none"}>
           <ModalCloseButton />
-          <ModalBody bg={"gray.100"} rounded={"xl"} p={0}>
+          <ModalBody rounded={"xl"} p={0}>
             {children}
           </ModalBody>
         </ModalContent>

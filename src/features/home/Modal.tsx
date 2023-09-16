@@ -5,7 +5,7 @@ import {
   ModalContent,
   ModalOverlay,
 } from "@chakra-ui/react";
-import { FormContact } from "../../components/FormContact";
+import { FormGetFly } from "../../components/FormContact";
 
 interface IModalBase {
   isOpen: boolean;
@@ -19,10 +19,10 @@ export const ModalBase = (props: IModalBase) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent bg={"transparent"} shadow={"none"}>
           <ModalCloseButton />
-          <ModalBody bg={"gray.100"} rounded={"sm"}>
-            <FormContact />
+          <ModalBody rounded={"sm"} p={0}>
+            <FormGetFly />
           </ModalBody>
         </ModalContent>
       </Modal>

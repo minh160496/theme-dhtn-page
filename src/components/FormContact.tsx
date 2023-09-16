@@ -18,6 +18,7 @@ import { Field, Form, Formik } from "formik";
 import Image from "next/image";
 import { useState } from "react";
 import { BtnTheme } from "./BtnTheme";
+import { useEffect } from "react";
 
 interface IForm {
   title?: string;
@@ -220,4 +221,68 @@ export const FormContact = (props: IForm) => {
       )}
     </Box>
   );
+};
+
+export const FormGetFly = () => {
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const referrer =
+      window.document.referrer !== ""
+        ? window.document.referrer
+        : window.location.origin;
+
+    const regex = /(https?:\/\/.*?)\//g;
+    const match = regex.exec(referrer);
+    const r = match ? match[0] : referrer;
+
+    let finalUrl = r;
+
+    const addParamIfMissing = (paramName: string, cookieName: string) => {
+      if (
+        (!urlParams.has(paramName) || urlParams.get(paramName) === "") &&
+        document.cookie.match(new RegExp(`${cookieName}=([^;]+)`))
+      ) {
+        finalUrl += `&${
+          document?.cookie?.match(new RegExp(`${cookieName}=([^;]+)`))[0]
+        }`;
+      } else {
+        finalUrl +=
+          urlParams.get(paramName) !== null
+            ? `&${paramName}=${urlParams.get(paramName)}`
+            : "";
+      }
+    };
+
+    addParamIfMissing("utm_source", "utm_source");
+    addParamIfMissing("utm_campaign", "utm_campaign");
+    addParamIfMissing("utm_medium", "utm_medium");
+    addParamIfMissing("utm_content", "utm_content");
+    addParamIfMissing("utm_term", "utm_term");
+    addParamIfMissing("utm_user", "utm_user");
+    addParamIfMissing("utm_account", "utm_account");
+
+    finalUrl += `&full_url=${encodeURIComponent(window.location.href)}`;
+
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute(
+      "src",
+      `https://aum.getflycrm.com/api/forms/viewform/?key=Gks7frPWuBMzyzUC6CzH0zKCnGrO7OBcnenVzuBlKcWsplsPTm&referrer=${finalUrl}`
+    );
+    iframe.style.width = "100%";
+    iframe.style.height = "400px";
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("marginheight", "0");
+    iframe.setAttribute("marginwidth", "0");
+
+    const container = document.getElementById(
+      "getfly-optin-form-iframe-1694663320595"
+    );
+    if (container) {
+      container.appendChild(iframe);
+    }
+
+    return () => container?.removeChild(iframe);
+  }, []);
+
+  return <div id="getfly-optin-form-iframe-1694663320595"></div>;
 };
