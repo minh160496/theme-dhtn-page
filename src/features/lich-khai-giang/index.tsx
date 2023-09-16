@@ -1,7 +1,5 @@
-import { FormContact } from "@/components/FormContact";
-import { Box, Container, Grid, Heading } from "@chakra-ui/react";
-import { LayoutNganh } from "@/layouts/layoutNganh";
 import { BoxTest } from "@/components/BoxTest";
+import { LayoutNganh } from "@/layouts/layoutNganh";
 
 export const LichKg = () => {
   return (

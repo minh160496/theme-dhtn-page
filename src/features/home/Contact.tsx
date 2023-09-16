@@ -106,7 +106,7 @@ export const Contact = () => {
       </Container>
 
       {/* Animate  */}
-      <Box className={styles["area"]} bg={"green.700"} w={"100%"}>
+      <Box className={styles["area"]} bg={"blue.900"} w={"100%"}>
         <List className={styles["circles"]}>
           <ListItem />
           <ListItem />
