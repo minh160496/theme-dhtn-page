@@ -3,6 +3,7 @@
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Post } from "@/features/post";
 import { LayoutPost } from "@/layouts/layoutPost";
+import { GetStaticPaths } from "next";
 import { ReactElement } from "react";
 
 const api_url = process.env.API_URL || "";
@@ -40,6 +41,13 @@ export const getStaticProps = async (context: any) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+  return {
+    paths: [], //indicates that no page needs be created at build time
+    fallback: "blocking", //indicates the type of fallback
+  };
 };
 
 interface IPostPage {
