@@ -96,7 +96,7 @@ export const Support = () => {
               style={{ borderRadius: "12px" }}
             />
             <Text fontWeight={"bold"} textAlign={"center"}>
-              Hỗ trợ của tuaf
+              Hỗ trợ - Đại học Thái Nguyên
             </Text>
           </GridItem>
           <GridItem>

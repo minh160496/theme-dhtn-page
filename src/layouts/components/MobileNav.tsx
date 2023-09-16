@@ -1,5 +1,6 @@
 "use client";
 
+import { useSize } from "@/hooks/useSizeWindow";
 import { menus } from "@/router";
 import {
   Collapse,
@@ -23,7 +24,6 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { HeaderTop } from "./HeaderTop";
 import { Logo } from "./Logo";
-import { useSize } from "@/hooks/useSizeWindow";
 
 interface INavItem {
   title: string;
@@ -142,7 +142,24 @@ export const MobileNav = () => {
             </Stack>
           </DrawerBody>
           <Divider />
-          <DrawerFooter py="24px" px={"12px"}>
+          <DrawerFooter
+            pos={"relative"}
+            _before={{
+              content: "''",
+              width: "5e3px",
+              height: "100%",
+              backgroundImage:
+                "-webkit-gradient(linear,left top,left bottom,from(#004685),to(#004956e6));",
+              position: "absolute",
+              top: 0,
+              right: "36%",
+              zIndex: -1,
+              transform: "skew(-30deg)",
+              WebkitTransformOrigin: "left bottom",
+            }}
+            py="24px"
+            px={"12px"}
+          >
             <HeaderTop />
           </DrawerFooter>
         </DrawerContent>

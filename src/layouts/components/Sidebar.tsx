@@ -1,21 +1,64 @@
 "use client";
 
-import { Item, categotys } from "@/features/home/Categorys";
+import { categotys } from "@/features/home/Categorys";
 import {
   Box,
   Button,
   Heading,
-  Link,
   SimpleGrid,
   Text,
   VStack,
+  Flex,
 } from "@chakra-ui/react";
-import { AiFillYoutube } from "react-icons/ai";
+import Image from "next/image";
+import Link from "next/link";
 import { BiLogoTiktok } from "react-icons/bi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { SiZalo } from "react-icons/si";
 import { FormContact } from "./FormContact";
+
+export const Item = ({
+  path,
+  image,
+  title,
+}: {
+  path: string;
+  image: string;
+  title: string;
+}) => {
+  return (
+    <Box
+      as={Link}
+      href={path || "/"}
+      pos="relative"
+      transition={"all ease .4s"}
+      _hover={{ transform: "translateY(-10px)" }}
+    >
+      <Image
+        priority
+        width={700}
+        height={400}
+        src={image}
+        alt={title}
+        style={{ maxHeight: "150px", filter: "brightness(50%)" }}
+      />
+      <Box
+        as={Flex}
+        pos={"absolute"}
+        top={0}
+        left={"10%"}
+        right={"40%"}
+        bottom={0}
+        align={"center"}
+      >
+        <Heading as={"h2"} size={"md"} color={"white"} textAlign={"center"}>
+          {title}
+        </Heading>
+      </Box>
+    </Box>
+  );
+};
 
 export const Sidebar = ({ sticky }: { sticky?: string }) => {
   return (
@@ -27,7 +70,7 @@ export const Sidebar = ({ sticky }: { sticky?: string }) => {
           pb={"20px"}
           textAlign={{ base: "center", lg: "start" }}
         >
-          Các khóa học
+          Các ngành đào tạo
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 3, lg: 1 }} gap={"20px"}>
           {categotys.map((cat, index) => (
@@ -50,54 +93,35 @@ export const Sidebar = ({ sticky }: { sticky?: string }) => {
           Mạng xã hội
         </Heading>
         <Box
-          rounded={"2xl"}
+          rounded={"sm"}
           p="24px"
-          bg="radial-gradient(circle, rgba(53,227,170,1) 2%, rgba(0,132,62,1) 100%, rgba(89,227,53,1) 100%)"
+          border={"1px solid"}
+          borderColor={"gray.300"}
         >
           <VStack spacing={"16px"}>
-            <Button
-              leftIcon={<FaFacebook />}
-              bg={"white"}
-              color={"blue.600"}
-              w={"full"}
-            >
-              Fanpage Tuaf
+            <Button leftIcon={<FaFacebook />} colorScheme="facebook" w={"full"}>
+              Fanpage
+            </Button>
+            <Button leftIcon={<SiZalo />} colorScheme="facebook" w={"full"}>
+              Zalo hỗ trợ
             </Button>
             <Button
-              leftIcon={<FaFacebook />}
-              bg={"white"}
-              color={"blue.600"}
+              leftIcon={<BiLogoTiktok />}
+              bg="blackAlpha.800"
               w={"full"}
+              color={"whiteAlpha.800"}
             >
-              Group Tuaf
-            </Button>
-            <Button
-              leftIcon={<AiFillYoutube />}
-              bg={"white"}
-              color={"red.600"}
-              w={"full"}
-            >
-              Youtube Tuaf
-            </Button>
-            <Button
-              leftIcon={<SiZalo />}
-              bg={"white"}
-              color={"blue.600"}
-              w={"full"}
-            >
-              Group Zalo Tuaf
-            </Button>
-            <Button leftIcon={<BiLogoTiktok />} bg={"white"} w={"full"}>
-              Tiktok Tuaf
+              Tiktok
             </Button>
             <VStack pt={"24px"} w={"full"}>
               <Text>Liên hệ trực tiếp</Text>
               <Button
                 leftIcon={<BsFillTelephoneFill />}
-                bg={"white"}
+                variant={"link"}
+                color={"red.600"}
                 w={"full"}
               >
-                <Link href="tel: 0912345678">0912345678</Link>
+                <Link href="tel: 0914709118">0914709118</Link>
               </Button>
             </VStack>
           </VStack>

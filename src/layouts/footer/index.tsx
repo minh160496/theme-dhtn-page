@@ -74,13 +74,13 @@ export const Footer = () => {
           <Stack align={"flex-start"}>
             <ListHeader>Thông tin liên hệ</ListHeader>
             <Box as={Link} href={"#"}>
-              Đại học nông lâm - trạm tuyển sinh AUM
+              Đại học Thái nguyên - trạm tuyển sinh AUM
             </Box>
-            <Box as={Link} href={"tel:0965500306"}>
-              Hotline: 0965500306
+            <Box as={Link} href={"tel:0914709118"}>
+              Hotline: 0914709118
             </Box>
-            <Box as={Link} href={"mailto:aum@gmail.com"}>
-              Email: aume@gmail.com
+            <Box as={Link} href={"mailto:daihoctructuyen@tnu.edu.vn"}>
+              Email: daihoctructuyen@tnu.edu.vn
             </Box>
           </Stack>
 
@@ -89,17 +89,14 @@ export const Footer = () => {
             <Box as={Link} href={"/gioi-thieu"}>
               Về chúng tôi
             </Box>
-            <Box as={Link} href={"/nganh-kinh-doanh-xuat-nhap-khau-nong-san"}>
-              Ngành kinh doanh xuất nhập khẩu nông sản
+            <Box as={Link} href={"/lich-khai-giang"}>
+              Lịch khai giảng
             </Box>
-            <Box as={Link} href={"/nganh-nong-nghiep-cong-nghe-cao"}>
-              Ngành nông nghiệp công nghệ cao
+            <Box as={Link} href={"/dang-ky"}>
+              Đăng ký
             </Box>
-            <Box as={Link} href={"/nganh-cong-nghe-thuc-pham"}>
-              Ngành công nghệ thực phẩm
-            </Box>
-            <Box as={Link} href={"/nganh-cong-nghe-thuc-pham-tieng-anh"}>
-              Ngành công nghệ thực phẩm tiếng Anh
+            <Box as={Link} href={"/tin-tuc"}>
+              Tin tức
             </Box>
           </Stack>
 
