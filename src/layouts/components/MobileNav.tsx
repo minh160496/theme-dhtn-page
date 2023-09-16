@@ -23,6 +23,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 import { HeaderTop } from "./HeaderTop";
 import { Logo } from "./Logo";
+import { useSize } from "@/hooks/useSizeWindow";
 
 interface INavItem {
   title: string;
@@ -99,6 +100,9 @@ export const MobileNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
 
+  const { size } = useSize();
+  const { width } = size;
+
   return (
     <>
       <IconButton
@@ -111,7 +115,7 @@ export const MobileNav = () => {
         aria-label={"Toggle Navigation"}
       />
       <Drawer
-        isOpen={isOpen}
+        isOpen={width < 992 ? isOpen : false}
         placement="left"
         onClose={onClose}
         finalFocusRef={btnRef}
