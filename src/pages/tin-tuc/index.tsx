@@ -3,9 +3,8 @@
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Posts } from "@/features/posts";
 
-export const getStaticProps = async (context: any) => {
+export const getServerSideProps = async (context: any) => {
   const { query } = context;
-
   const page = query?.page || "1";
 
   const api_url = process.env.API_URL || "";

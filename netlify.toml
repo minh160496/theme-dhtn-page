@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build" # hoặc "yarn build" nếu bạn dùng Yarn
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "https://main--curious-fairy-548798.netlify.app/tin-tuc" 
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
