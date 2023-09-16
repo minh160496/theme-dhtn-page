@@ -6,9 +6,9 @@ export const Logo = () => {
     <Link href="/">
       <Image
         priority
-        width={80}
-        height={80}
-        src={`/logo-tuaf.png`}
+        width={100}
+        height={100}
+        src={`/logo.png`}
         alt="logo evstep"
       />
     </Link>

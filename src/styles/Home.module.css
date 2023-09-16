@@ -6,6 +6,8 @@
 
 .area {
   height: 1200px;
+  position: relative;
+  z-index: -1;
 }
 
 .circles {
