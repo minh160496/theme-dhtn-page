@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build" # hoặc "yarn build" nếu bạn dùng Yarn
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
