@@ -9,7 +9,7 @@ export const getServerSideProps = async (context: any) => {
 
   const api_url = process.env.API_URL || "";
   const res = await fetch(
-    `${api_url}/posts?_embed&per_page=3&status=publish&page=${page}`,
+    `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}`,
     {
       next: { revalidate: 3600 },
     }
