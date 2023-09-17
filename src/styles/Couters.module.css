@@ -5,7 +5,6 @@
 }
 
 .area {
-  height: 1200px;
   position: relative;
   z-index: -1;
 }
@@ -121,7 +120,7 @@
 
 @media (min-width: 350px) {
   .area {
-    height: 1050px;
+    height: 850px;
   }
 }
 
@@ -133,19 +132,19 @@
 
 @media (min-width: 520px) {
   .area {
-    height: 1100px;
+    height: 850px;
   }
 }
 
 @media (min-width: 798px) {
   .area {
-    height: 940px;
+    height: 850px;
   }
 }
 
-@media (min-width: 998px) {
+@media (min-width: 992px) {
   .area {
-    height: 400px;
+    height: 520px;
   }
 }
 
