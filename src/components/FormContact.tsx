@@ -222,7 +222,7 @@ export const FormContact = (props: IForm) => {
   );
 };
 
-export const FormGetFly = () => {
+export const FormGetFly = ({ title }: { title?: string }) => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const referrer =
@@ -290,15 +290,17 @@ export const FormGetFly = () => {
 
   return (
     <>
-      <Heading
-        as={"h2"}
-        size={{ base: "md", md: "lg" }}
-        textAlign={"center"}
-        color={"blue.700"}
-        pb={"16px"}
-      >
-        Để lại thông tin
-      </Heading>
+      {title && (
+        <Heading
+          as={"h2"}
+          size={{ base: "md", md: "lg" }}
+          textAlign={"center"}
+          color={"blue.700"}
+          pb={"16px"}
+        >
+          Để lại thông tin
+        </Heading>
+      )}
       <div id="getfly-optin-form-iframe-1694663320597"></div>
     </>
   );

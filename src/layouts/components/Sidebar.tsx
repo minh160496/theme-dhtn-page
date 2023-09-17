@@ -17,6 +17,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { SiZalo } from "react-icons/si";
 import { FormContact } from "./FormContact";
+// import { FormGetFly } from "@/components/FormContact";
 
 export const Item = ({
   path,
@@ -83,6 +84,7 @@ export const Sidebar = ({ sticky }: { sticky?: string }) => {
           ))}
         </SimpleGrid>
       </Box>
+
       <Box pt={"32px"}>
         <Heading
           as={"h3"}
@@ -129,7 +131,15 @@ export const Sidebar = ({ sticky }: { sticky?: string }) => {
       </Box>
 
       <Box pt={"24px"}>
-        <FormContact title="Đăng ký nhận tin" action="Đăng ký" />
+        {/* <Heading
+          as={"h3"}
+          size={"md"}
+          pb={"20px"}
+          textAlign={{ base: "center", lg: "start" }}
+        >
+          Đăng ký tư vấn
+        </Heading> */}
+        <FormContact title="Đăng ký tư vấn" action="Đăng ký" />
       </Box>
     </Box>
   );

@@ -22,7 +22,7 @@ export const ModalBase = (props: IModalBase) => {
         <ModalContent bg={"white"} pt={"12px"} rounded={"sm"}>
           <ModalCloseButton />
           <ModalBody rounded={"sm"}>
-            <FormGetFly />
+            <FormGetFly title="Để lại thông tin" />
           </ModalBody>
         </ModalContent>
       </Modal>

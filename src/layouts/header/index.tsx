@@ -76,7 +76,7 @@ export const Header = () => {
         </Container>
       </Box>
       <ModalBase isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-        <FormGetFly />
+        <FormGetFly title="Để lại thông tin" />
       </ModalBase>
     </>
   );

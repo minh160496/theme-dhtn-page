@@ -42,7 +42,7 @@ export const LayoutNganh = ({
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={"24px"}>
               <GridItem colSpan={2}>{children}</GridItem>
               <GridItem>
-                <FormGetFly />
+                <FormGetFly title="Để lại thông tin" />
               </GridItem>
             </SimpleGrid>
           </Container>
