@@ -61,7 +61,7 @@ const counters = [
 
 export const Counters = () => {
   return (
-    <Box pos={"relative"}>
+    <Box pos={"relative"} zIndex={0}>
       <Container
         maxW="6xl"
         py={"48px"}
