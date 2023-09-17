@@ -1,8 +1,10 @@
-import { Providers } from "@/components/provider";
 import Layout from "@/layouts";
+import theme from "@/theme";
+import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
+
 import "@/styles/globals.css";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -16,11 +18,9 @@ type AppPropsWithLayout = AppProps & {
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
-    <>
-      <Providers>
-        <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-      </Providers>
-    </>
+    <ChakraProvider theme={theme}>
+      <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+    </ChakraProvider>
   );
 };
 
