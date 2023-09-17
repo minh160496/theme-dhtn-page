@@ -13,7 +13,7 @@ export const Dangky = () => {
             pb="16px"
             color={"white"}
           >
-            Đăng ký học từ xa tại Đại học Nông lâm
+            Đăng ký học từ xa tại Đại học Thái Nguyên
           </Heading>
         </Container>
       </Box>

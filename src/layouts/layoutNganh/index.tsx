@@ -40,7 +40,7 @@ export const LayoutNganh = ({
         >
           <Container maxW={"6xl"} py="120px">
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={"24px"}>
-              <GridItem colSpan={2}>{children}</GridItem>
+              <GridItem colSpan={{ base: 1, md: 2 }}>{children}</GridItem>
               <GridItem>
                 <FormGetFly title="Để lại thông tin" />
               </GridItem>

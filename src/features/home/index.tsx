@@ -9,7 +9,7 @@ const Banner = dynamic(() => import("./Banner").then((mod) => mod.Banner), {
   loading: () => <Loading />,
 });
 const TextScroll = dynamic(
-  () => import("./TextScroll").then((mod) => mod.TextScroll),
+  () => import("./TextScroll").then((mod) => mod.TextScrollHomePage),
   {
     loading: () => <Loading />,
   }
