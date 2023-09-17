@@ -1,5 +1,5 @@
-import { FormContact } from "@/components/FormContact";
-import { Box, Container, Grid, Heading } from "@chakra-ui/react";
+import { FormGetFly } from "@/components/FormContact";
+import { Box, Container, Heading } from "@chakra-ui/react";
 
 export const Dangky = () => {
   return (
@@ -17,11 +17,9 @@ export const Dangky = () => {
           </Heading>
         </Container>
       </Box>
-      <Box>
+      <Box bg={"linear-gradient(180deg, rgba(255, 255, 255, 1), #D6F5FE 100%)"}>
         <Container maxW={"6xl"} py="120px">
-          <Grid placeItems={"center"}>
-            <FormContact title="Vui lòng điền thông tin" />
-          </Grid>
+          <FormGetFly title="Vui lòng điền thông tin" />
         </Container>
       </Box>
     </>
