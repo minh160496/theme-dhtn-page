@@ -9,7 +9,7 @@ export const Logo = () => {
         width={100}
         height={100}
         src={`/logo.png`}
-        alt="logo evstep"
+        alt="logo đại học Thái nguyên"
       />
     </Link>
   );

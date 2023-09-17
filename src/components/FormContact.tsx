@@ -16,9 +16,8 @@ import {
 } from "@chakra-ui/react";
 import { Field, Form, Formik } from "formik";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BtnTheme } from "./BtnTheme";
-import { useEffect } from "react";
 
 interface IForm {
   title?: string;
@@ -192,7 +191,7 @@ export const FormContact = (props: IForm) => {
                   w={"full"}
                   mt={"24px"}
                 >
-                  Giữ chỗ ngay
+                  Đăng ký tư vấn
                 </BtnTheme>
 
                 <Text fontSize={".7rem"} fontWeight={"bold"}>
@@ -242,9 +241,12 @@ export const FormGetFly = () => {
         (!urlParams.has(paramName) || urlParams.get(paramName) === "") &&
         document.cookie.match(new RegExp(`${cookieName}=([^;]+)`))
       ) {
-        finalUrl += `&${
-          document?.cookie?.match(new RegExp(`${cookieName}=([^;]+)`))[0]
-        }`;
+        const match = document?.cookie?.match(
+          new RegExp(`${cookieName}=([^;]+)`)
+        );
+        if (match) {
+          finalUrl += `&${match[0]}`;
+        }
       } else {
         finalUrl +=
           urlParams.get(paramName) !== null
@@ -275,14 +277,29 @@ export const FormGetFly = () => {
     iframe.setAttribute("marginwidth", "0");
 
     const container = document.getElementById(
-      "getfly-optin-form-iframe-1694663320595"
+      "getfly-optin-form-iframe-1694663320597"
     );
     if (container) {
       container.appendChild(iframe);
     }
 
-    return () => container?.removeChild(iframe);
+    return () => {
+      container?.removeChild(iframe);
+    };
   }, []);
 
-  return <div id="getfly-optin-form-iframe-1694663320595"></div>;
+  return (
+    <>
+      <Heading
+        as={"h2"}
+        size={{ base: "md", md: "lg" }}
+        textAlign={"center"}
+        color={"blue.700"}
+        pb={"16px"}
+      >
+        Để lại thông tin
+      </Heading>
+      <div id="getfly-optin-form-iframe-1694663320597"></div>
+    </>
+  );
 };

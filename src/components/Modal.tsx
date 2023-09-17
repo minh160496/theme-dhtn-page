@@ -20,9 +20,9 @@ export const ModalBase = (props: IModalBase) => {
   const { onClose, isOpen, children } = props;
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent bg={"transparent"} shadow={"none"}>
+        <ModalContent bg={"white"} pt={"12px"} rounded={"sm"}>
           <ModalCloseButton />
           <ModalBody rounded={"xl"} p={0}>
             {children}

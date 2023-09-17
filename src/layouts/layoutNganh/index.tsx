@@ -1,7 +1,8 @@
 "use client";
 
-import { FormContact } from "@/components/FormContact";
+import { FormGetFly } from "@/components/FormContact";
 import { Counters } from "@/features/home/Counters";
+import { Review } from "@/features/home/Review";
 import {
   Box,
   Container,
@@ -41,12 +42,13 @@ export const LayoutNganh = ({
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={"24px"}>
               <GridItem colSpan={2}>{children}</GridItem>
               <GridItem>
-                <FormContact />
+                <FormGetFly />
               </GridItem>
             </SimpleGrid>
           </Container>
         </Box>
         <Counters />
+        <Review />
       </Box>
     </>
   );

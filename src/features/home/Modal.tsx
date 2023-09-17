@@ -17,11 +17,11 @@ export const ModalBase = (props: IModalBase) => {
   const { onClose, isOpen } = props;
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent bg={"transparent"} shadow={"none"}>
+        <ModalContent bg={"white"} pt={"12px"} rounded={"sm"}>
           <ModalCloseButton />
-          <ModalBody rounded={"sm"} p={0}>
+          <ModalBody rounded={"sm"}>
             <FormGetFly />
           </ModalBody>
         </ModalContent>
