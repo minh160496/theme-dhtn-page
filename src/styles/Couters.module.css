@@ -148,6 +148,12 @@
   }
 }
 
+@media (min-width: 1280px) {
+  .area {
+    height: 400px;
+  }
+}
+
 /* animation for banner */
 .leaf {
   position: absolute;
