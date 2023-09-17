@@ -36,7 +36,7 @@ export const About = () => {
         <Grid placeItems={"center"} py={"24px"}>
           <Image
             src={"/truong-dai-hoc-nong-lam-thai-nguyen.jpg"}
-            alt="Đại học nông lâm Thái Nguyên"
+            alt="Đại học Thái Nguyên"
             width={600}
             height={436}
           />
@@ -118,19 +118,19 @@ export const About = () => {
           trên nhiều cương vị công tác đã khẳng định chất lượng đào tạo cũng như
           vai trò của Nhà trường cho sự nghiệp công nghiệp hoá, hiện đại hoá đất
           nước. Với sự nỗ lực phấn đấu của các thế hệ cán bộ viên chức và người
-          học, Trường Đại học Nông Lâm Thái Nguyên đã vinh dự được đón nhận
-          nhiều phần thưởng, danh hiệu cao quý của Đảng, Nhà nước trao tặng như:
-          Danh hiệu Anh hùng Lao động (2013) Huân chương Độc lập hạng nhì (2021)
-          Huân chương Độc lập hạng ba (2004), (2019) Huân chương Lao động hạng
-          nhất (1995), (2015) Huân chương Lao động hạng nhì (1985) Huân chương
-          Lao động hạng ba (1980) Nhiều đơn vị, cá nhân trong trường được trao
-          tặng Huân chương Lao động, Bằng khen của Thủ tướng Chính Phủ, Bộ
-          GD&ĐT; 02 danh hiệu Anh hùng lao động, 03 Nhà giáo nhân dân, 19 cán bộ
-          giảng dạy được công nhận danh hiệu Nhà giáo ưu tú, 02 giảng viên nữ
-          được trao giải Kovalevskaia. Nhà trường luôn mong muốn tiếp tục nhận
-          được sự hợp tác giúp đỡ của các tổ chức, cá nhân trong nước và quốc tế
-          để Nhà trường hoàn thành xuất sắc sứ mệnh đào tạo và nghiên cứu khoa
-          học góp phần vào sự nghiệp công nghiệp hóa, hiện đại hóa đất nước.
+          học, Trường Đại học Thái Nguyên đã vinh dự được đón nhận nhiều phần
+          thưởng, danh hiệu cao quý của Đảng, Nhà nước trao tặng như: Danh hiệu
+          Anh hùng Lao động (2013) Huân chương Độc lập hạng nhì (2021) Huân
+          chương Độc lập hạng ba (2004), (2019) Huân chương Lao động hạng nhất
+          (1995), (2015) Huân chương Lao động hạng nhì (1985) Huân chương Lao
+          động hạng ba (1980) Nhiều đơn vị, cá nhân trong trường được trao tặng
+          Huân chương Lao động, Bằng khen của Thủ tướng Chính Phủ, Bộ GD&ĐT; 02
+          danh hiệu Anh hùng lao động, 03 Nhà giáo nhân dân, 19 cán bộ giảng dạy
+          được công nhận danh hiệu Nhà giáo ưu tú, 02 giảng viên nữ được trao
+          giải Kovalevskaia. Nhà trường luôn mong muốn tiếp tục nhận được sự hợp
+          tác giúp đỡ của các tổ chức, cá nhân trong nước và quốc tế để Nhà
+          trường hoàn thành xuất sắc sứ mệnh đào tạo và nghiên cứu khoa học góp
+          phần vào sự nghiệp công nghiệp hóa, hiện đại hóa đất nước.
         </Text>
       </Container>
     </Box>

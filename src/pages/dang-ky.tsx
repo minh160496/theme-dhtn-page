@@ -2,6 +2,7 @@
 
 import { Loading } from "@/components/Loading";
 import dynamic from "next/dynamic";
+import { NextSeo } from "next-seo";
 
 const Dangky = dynamic(
   () => import("@/features/dang-ky").then((mod) => mod.Dangky),
@@ -13,6 +14,10 @@ const Dangky = dynamic(
 const Page = () => {
   return (
     <>
+      <NextSeo
+        title="Đăng ký học từ xa Đại học Thái Nguyên"
+        description="Đăng ký học Đại học từ xa Đại học Thái Nguyên, tiết kiệm chi phí và thời gian"
+      />
       <Dangky />
     </>
   );

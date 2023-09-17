@@ -4,6 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
+import { DefaultSeo } from "next-seo";
 
 import "@/styles/globals.css";
 
@@ -18,9 +19,15 @@ type AppPropsWithLayout = AppProps & {
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (
-    <ChakraProvider theme={theme}>
-      <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-    </ChakraProvider>
+    <>
+      <DefaultSeo
+        title="Đại học Thái Nguyên"
+        description="Hệ đào tạo từ xa - Đại học Thái Nguyên tuyển sinh 2023"
+      />
+      <ChakraProvider theme={theme}>
+        <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+      </ChakraProvider>
+    </>
   );
 };
 

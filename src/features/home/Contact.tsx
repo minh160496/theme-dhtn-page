@@ -72,7 +72,7 @@ export const Contact = () => {
         <HeadSection
           title="Tuyển sinh"
           subtitle="Contact"
-          desc="Đại học nông lâm năm 2023"
+          desc="Đại học năm 2023"
         />
         <SimpleGrid columns={{ base: 1, lg: 3 }} gap={"24px"} pt={"24px"}>
           <GridItem colSpan={{ base: 1, lg: 2 }}>

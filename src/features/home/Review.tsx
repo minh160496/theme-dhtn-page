@@ -111,7 +111,7 @@ export const Review = () => {
         <HeadSection
           subtitle="Review"
           title="Đánh giá của học viên"
-          desc="Cùng lắng nghe những đánh giá của học viên đã tốt nghiệp hệ đào tạo từ xa tại tuaf"
+          desc="Cùng lắng nghe những đánh giá của học viên đã tốt nghiệp hệ đào tạo từ xa tại Đại học Thái Nguyên"
         />
         <Stack
           direction={{ base: "column", md: "row" }}

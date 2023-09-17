@@ -5,6 +5,7 @@ import { Post } from "@/features/post";
 import { LayoutPost } from "@/layouts/layoutPost";
 import { GetStaticPaths } from "next";
 import { ReactElement } from "react";
+import { NextSeo } from "next-seo";
 
 const api_url = process.env.API_URL || "";
 
@@ -12,7 +13,9 @@ export const getStaticProps = async (context: any) => {
   try {
     const params = context.params;
     const slug = params?.slug || "";
-    const res = await fetch(`${api_url}/posts?slug=${slug}`);
+    const res = await fetch(`${api_url}/posts?slug=${slug}`, {
+      next: { revalidate: 30 },
+    });
     const posts = await res.json();
     const post = posts ? posts[0] : null;
     const categoryId = post?.categories[0] || null; // Giả sử mỗi bài viết chỉ thuộc về một thể loại
@@ -59,6 +62,15 @@ const Page = (props: IPostPage) => {
   const { post, samePosts } = props;
   return (
     <>
+      <NextSeo
+        title={
+          post.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
+        }
+        description={
+          post.excerpt?.rendered ||
+          "Đại học Thái Nguyên - tuyển sinh hệ từ xa, học tập tiết kiệm thời gian và chi phí bằng cử nhân do Bộ Giáo dục cấp"
+        }
+      />
       <ErrorBoundary fallback={<h1>Lỗi phía máy chủ</h1>}>
         <Post post={post} relatedPosts={samePosts} />
       </ErrorBoundary>
