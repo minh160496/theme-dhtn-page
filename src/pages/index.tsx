@@ -1,8 +1,9 @@
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Loading } from "@/components/Loading";
 import { Home } from "@/features/home";
+import type { GetStaticProps } from "next";
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const api_url = process.env.API_URL || "";
     const res = await fetch(
