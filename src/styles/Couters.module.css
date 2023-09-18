@@ -120,37 +120,25 @@
 
 @media (min-width: 350px) {
   .area {
-    height: 850px;
+    height: 700px;
   }
 }
 
-@media (min-width: 450px) {
+@media (min-width: 768px) {
   .area {
-    height: 1160px;
-  }
-}
-
-@media (min-width: 520px) {
-  .area {
-    height: 850px;
-  }
-}
-
-@media (min-width: 798px) {
-  .area {
-    height: 850px;
+    height: 480px;
   }
 }
 
 @media (min-width: 992px) {
   .area {
-    height: 520px;
+    height: 340px;
   }
 }
 
 @media (min-width: 1280px) {
   .area {
-    height: 400px;
+    height: 320px;
   }
 }
 

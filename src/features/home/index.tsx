@@ -62,7 +62,7 @@ export const Home = ({ posts }: { posts: any[] }) => {
   return (
     <>
       <Banner />
-      <Box pos={"sticky"} top={"96px"} zIndex={3}>
+      <Box pos={"sticky"} top={"92px"} zIndex={3}>
         <TextScroll />
       </Box>
       <Categorys />
