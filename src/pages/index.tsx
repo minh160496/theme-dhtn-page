@@ -2,7 +2,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import { Loading } from "@/components/Loading";
 import { Home } from "@/features/home";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
     const api_url = process.env.API_URL || "";
     const res = await fetch(
