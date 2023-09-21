@@ -1,7 +1,7 @@
 "server only";
 
 import ErrorBoundary from "@/components/ErrorBoundary";
-import { Posts } from "@/features/posts";
+import { LatestPost } from "@/features/latestPost";
 import { NextSeo } from "next-seo";
 
 export const getServerSideProps = async (context: any) => {
@@ -13,7 +13,7 @@ export const getServerSideProps = async (context: any) => {
     const res = await fetch(
       `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}`,
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 5 },
       }
     );
     const errorCode = res.ok ? false : res.status;
@@ -50,7 +50,7 @@ interface IPostspage {
 }
 
 const Page = (props: IPostspage) => {
-  const { posts, totalPosts } = props;
+  const { posts } = props;
 
   return (
     <>
@@ -59,7 +59,7 @@ const Page = (props: IPostspage) => {
         description="Đại học Thái Nguyên tuyển sinh năm 2023 - tổng hợp các tin tức tuyển sinh mới nhất của Đại học Thái Nguyên"
       />
       <ErrorBoundary fallback={<h1>Lỗi server</h1>}>
-        <Posts posts={posts} totalPosts={totalPosts} />
+        <LatestPost posts={posts} />
       </ErrorBoundary>
     </>
   );

@@ -6,10 +6,11 @@ export const Logo = () => {
     <Link href="/">
       <Image
         priority
-        width={100}
-        height={100}
-        src={`/logo.png`}
-        alt="logo đại học Thái nguyên"
+        width={80}
+        height={80}
+        style={{ borderRadius: "50%" }}
+        src={`/logo-dhthainguyen.png`}
+        alt="logo Đại học Thái nguyên"
       />
     </Link>
   );

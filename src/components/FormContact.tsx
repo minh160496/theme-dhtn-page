@@ -222,70 +222,119 @@ export const FormContact = (props: IForm) => {
   );
 };
 
-export const FormGetFly = ({ title }: { title?: string }) => {
+const comonForm = ({ id, href }: { id: string; href: string }) => {
+  const generateMatch = ({ utm, value }: { utm: string; value?: string }) => {
+    const valueCur = value || "=([^;]+)";
+    const matchers = document.cookie.match(new RegExp(utm + valueCur));
+    return matchers ? matchers : [];
+  };
+
+  let r =
+    window.document.referrer != ""
+      ? window.document.referrer
+      : window.location.origin;
+  const regex = /(https?:\/\/.*?)\//g;
+  const furl = regex.exec(r);
+  r = furl ? furl[0] : r;
+  const f = document.createElement("iframe");
+  const url_string = new URLSearchParams(window.location.search);
+  let utm_source, utm_campaign, utm_medium, utm_content, utm_term;
+  if (
+    (!url_string.has("utm_source") || url_string.get("utm_source") == "") &&
+    generateMatch({ utm: "utm_source" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_source" })[0];
+  } else {
+    r +=
+      url_string.get("utm_source") != null
+        ? "&utm_source=" + url_string.get("utm_source")
+        : "";
+  }
+  if (
+    (!url_string.has("utm_campaign") || url_string.get("utm_campaign") == "") &&
+    generateMatch({ utm: "utm_campaign" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_campaign" })[0];
+  } else {
+    r +=
+      url_string.get("utm_campaign") != null
+        ? "&utm_campaign=" + url_string.get("utm_campaign")
+        : "";
+  }
+  if (
+    (!url_string.has("utm_medium") || url_string.get("utm_medium") == "") &&
+    generateMatch({ utm: "utm_medium" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_medium" })[0];
+  } else {
+    r +=
+      url_string.get("utm_medium") != null
+        ? "&utm_medium=" + url_string.get("utm_medium")
+        : "";
+  }
+  if (
+    (!url_string.has("utm_content") || url_string.get("utm_content") == "") &&
+    generateMatch({ utm: "utm_content" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_content" })[0];
+  } else {
+    r +=
+      url_string.get("utm_content") != null
+        ? "&utm_content=" + url_string.get("utm_content")
+        : "";
+  }
+  if (
+    (!url_string.has("utm_term") || url_string.get("utm_term") == "") &&
+    generateMatch({ utm: "utm_term" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_term" })[0];
+  } else {
+    r +=
+      url_string.get("utm_term") != null
+        ? "&utm_term=" + url_string.get("utm_term")
+        : "";
+  }
+  if (
+    (!url_string.has("utm_user") || url_string.get("utm_user") == "") &&
+    generateMatch({ utm: "utm_user" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_user" })[0];
+  } else {
+    r +=
+      url_string.get("utm_user") != null
+        ? "&utm_user=" + url_string.get("utm_user")
+        : "";
+  }
+  if (
+    (!url_string.has("utm_account") || url_string.get("utm_account") == "") &&
+    generateMatch({ utm: "utm_account" }) != null
+  ) {
+    r += "&" + generateMatch({ utm: "utm_account" })[0];
+  } else {
+    r +=
+      url_string.get("utm_account") != null
+        ? "&utm_account=" + url_string.get("utm_account")
+        : "";
+  }
+  r += "&full_url=" + encodeURIComponent(window.location.href);
+  r += "&full_url=" + encodeURIComponent(window.location.href);
+  f.setAttribute("src", href + r);
+  f.style.width = "100%";
+  f.style.height = "380px";
+  f.setAttribute("frameborder", "0");
+  f.setAttribute("marginheight", "0");
+  f.setAttribute("marginwidth", "0");
+  const s = document.getElementById(id);
+
+  if (!s?.hasChildNodes()) s?.appendChild(f);
+};
+
+export const FormGetFly2 = ({ title }: { title?: string }) => {
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const referrer =
-      window.document.referrer !== ""
-        ? window.document.referrer
-        : window.location.origin;
-
-    const regex = /(https?:\/\/.*?)\//g;
-    const match = regex.exec(referrer);
-    const r = match ? match[0] : referrer;
-
-    let finalUrl = r;
-
-    const addParamIfMissing = (paramName: string, cookieName: string) => {
-      if (
-        (!urlParams.has(paramName) || urlParams.get(paramName) === "") &&
-        document.cookie.match(new RegExp(`${cookieName}=([^;]+)`))
-      ) {
-        const match = document?.cookie?.match(
-          new RegExp(`${cookieName}=([^;]+)`)
-        );
-        if (match) {
-          finalUrl += `&${match[0]}`;
-        }
-      } else {
-        finalUrl +=
-          urlParams.get(paramName) !== null
-            ? `&${paramName}=${urlParams.get(paramName)}`
-            : "";
-      }
-    };
-
-    addParamIfMissing("utm_source", "utm_source");
-    addParamIfMissing("utm_campaign", "utm_campaign");
-    addParamIfMissing("utm_medium", "utm_medium");
-    addParamIfMissing("utm_content", "utm_content");
-    addParamIfMissing("utm_term", "utm_term");
-    addParamIfMissing("utm_user", "utm_user");
-    addParamIfMissing("utm_account", "utm_account");
-
-    finalUrl += `&full_url=${encodeURIComponent(window.location.href)}`;
-
-    const iframe = document.createElement("iframe");
-    iframe.setAttribute(
-      "src",
-      `https://aum.getflycrm.com/api/forms/viewform/?key=Gks7frPWuBMzyzUC6CzH0zKCnGrO7OBcnenVzuBlKcWsplsPTm&referrer=${finalUrl}`
-    );
-    iframe.style.width = "100%";
-    iframe.style.height = "400px";
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute("marginheight", "0");
-    iframe.setAttribute("marginwidth", "0");
-
-    const container = document.getElementById(
-      "getfly-optin-form-iframe-1694663320597"
-    );
-    if (container) {
-      container.appendChild(iframe);
-    }
-
-    return () => {
-      container?.removeChild(iframe);
-    };
+    comonForm({
+      id: "getfly-optin-form-iframe-1695175881155",
+      href: "https://aum.getflycrm.com/api/forms/viewform/?key=AxFWg9xmg9RGLjPsUiSwBCtbhyYTGWB3rBOtmMnxfQCEc9Draw&referrer=",
+    });
   }, []);
 
   return (
@@ -301,7 +350,33 @@ export const FormGetFly = ({ title }: { title?: string }) => {
           Để lại thông tin
         </Heading>
       )}
-      <div id="getfly-optin-form-iframe-1694663320597"></div>
+      <div id="getfly-optin-form-iframe-1695175881155"></div>
+    </>
+  );
+};
+
+export const FormGetFly1 = ({ title }: { title?: string }) => {
+  useEffect(() => {
+    comonForm({
+      id: "getfly-optin-form-iframe-1695175842604",
+      href: "https://aum.getflycrm.com/api/forms/viewform/?key=Gks7frPWuBMzyzUC6CzH0zKCnGrO7OBcnenVzuBlKcWsplsPTm&referrer=",
+    });
+  }, []);
+
+  return (
+    <>
+      {title && (
+        <Heading
+          as={"h2"}
+          size={{ base: "md", md: "lg" }}
+          textAlign={"center"}
+          color={"blue.700"}
+          pb={"16px"}
+        >
+          Để lại thông tin
+        </Heading>
+      )}
+      <div id="getfly-optin-form-iframe-1695175842604"></div>
     </>
   );
 };

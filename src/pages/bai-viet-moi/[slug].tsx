@@ -13,7 +13,7 @@ export const getServerSideProps = async (context: any) => {
     const params = context.params;
     const slug = params?.slug || "";
     const res = await fetch(`${api_url}/posts?slug=${slug}`, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 5 },
     });
     const posts = await res.json();
     const post = posts ? posts[0] : null;
@@ -24,7 +24,7 @@ export const getServerSideProps = async (context: any) => {
       // Lấy danh sách các bài viết cùng thể loại
       const resRelatedPosts = await fetch(
         `${api_url}/posts?categories=${categoryId}&exclude=${post?.id}&per_page=3&_embed`,
-        { next: { revalidate: 1800 } }
+        { next: { revalidate: 5 } }
       );
 
       const relatedPosts: any[] = await resRelatedPosts.json();
@@ -59,10 +59,10 @@ const Page = (props: IPostPage) => {
     <>
       <NextSeo
         title={
-          post.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
+          post?.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
         }
         description={
-          post.excerpt?.rendered ||
+          post?.excerpt?.rendered ||
           "Đại học Thái Nguyên - tuyển sinh hệ từ xa, học tập tiết kiệm thời gian và chi phí bằng cử nhân do Bộ Giáo dục cấp"
         }
       />

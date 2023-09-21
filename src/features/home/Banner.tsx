@@ -64,10 +64,10 @@ export const Banner = () => {
             >
               Tuyển sinh hệ từ xa E - learning
             </Text>
-            <Heading>Trường Đại học Thái Nguyên</Heading>
+            <Heading>Đại học Thái Nguyên</Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
               Chương trình tuyển sinh đại học từ xa Đại học Thái Nguyên - Sở hữu
-              bằng Đại học chính quy ngay tại nhà
+              bằng Đại học tương đương hệ chính quy ngay tại nhà
             </Text>
             <Stack
               spacing={4}

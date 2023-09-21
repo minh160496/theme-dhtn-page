@@ -53,7 +53,7 @@ export const Counter = (props: ICounter) => {
 };
 
 const counters = [
-  { start: 0, end: 7, suffix: "Ngành học trực tuyến", prefix: " " },
+  { start: 0, end: 9, suffix: "Ngành học trực tuyến", prefix: " " },
   { start: 0, end: 2000, suffix: "Khóa học" },
   { start: 0, end: 10000, suffix: "Sinh viên theo học" },
   { start: 0, end: 96, suffix: "Học viên có việc làm", prefix: "%" },
@@ -73,7 +73,7 @@ export const Counters = () => {
       >
         <HeadSectionLight
           title="Những con số ấn tượng"
-          subtitle="numbers"
+          subtitle="những con số"
           desc="Cùng xem những con số ấn tượng của chúng tôi trong suốt thời gian vừa qua"
         />
         <SimpleGrid

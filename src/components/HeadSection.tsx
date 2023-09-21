@@ -11,7 +11,7 @@ export const HeadSection = ({
 }) => {
   return (
     <VStack justify={"center"}>
-      <Text color={"#FA692E"}>{subtitle}</Text>
+      {/* <Text color={"#FA692E"}>{subtitle}</Text> */}
       <Heading
         as={"h2"}
         size={{ base: "sm", md: "lg" }}
@@ -39,7 +39,7 @@ export const HeadSectionLight = ({
 }) => {
   return (
     <VStack justify={"center"}>
-      <Text color={"#FA692E"}>{subtitle}</Text>
+      {/* <Text color={"#FA692E"}>{subtitle}</Text> */}
       <Heading
         as={"h2"}
         size={{ base: "sm", md: "lg" }}
