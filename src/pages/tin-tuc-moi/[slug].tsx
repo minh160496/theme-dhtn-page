@@ -7,14 +7,13 @@ import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { ReactElement } from "react";
 
-const api_url = process.env.API_URL || "";
-
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const api_url = process.env.API_URL || "";
   try {
     const params = context.params;
     const slug = params?.slug || "";
     const res = await fetch(`${api_url}/posts?slug=${slug}`, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 5 },
     });
     const posts = await res.json();
     const post = posts ? posts[0] : null;
@@ -25,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       // Lấy danh sách các bài viết cùng thể loại
       const resRelatedPosts = await fetch(
         `${api_url}/posts?categories=${categoryId}&exclude=${post?.id}&per_page=3&_embed`,
-        { next: { revalidate: 1800 } }
+        { next: { revalidate: 5 } }
       );
 
       const relatedPosts: any[] = await resRelatedPosts.json();

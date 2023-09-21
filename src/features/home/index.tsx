@@ -52,7 +52,7 @@ const Support = dynamic(() => import("./Support").then((mod) => mod.Support), {
   loading: () => <Loading />,
 });
 
-export const Home = ({ posts }: { posts: any[] }) => {
+export const Home = ({ news, notifis }: { news: any[]; notifis: any[] }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export const Home = ({ posts }: { posts: any[] }) => {
       <Counters />
       <Review />
       <Contact />
-      <Event posts={posts} />
+      <Event news={news} notifis={notifis} />
 
       <ModalBase isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
     </>

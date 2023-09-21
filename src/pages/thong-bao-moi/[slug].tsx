@@ -3,12 +3,12 @@
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { Post } from "@/features/post";
 import { LayoutPost } from "@/layouts/layoutPost";
+import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { ReactElement } from "react";
 
-const api_url = process.env.API_URL || "";
-
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const api_url = process.env.API_URL || "";
   try {
     const params = context.params;
     const slug = params?.slug || "";
@@ -45,6 +45,9 @@ export const getServerSideProps = async (context: any) => {
     };
   } catch (error) {
     console.log(error);
+    return {
+      props: { post: null, samePosts: [] },
+    };
   }
 };
 
@@ -59,10 +62,10 @@ const Page = (props: IPostPage) => {
     <>
       <NextSeo
         title={
-          post?.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
+          post.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
         }
         description={
-          post?.excerpt?.rendered ||
+          post.excerpt?.rendered ||
           "Đại học Thái Nguyên - tuyển sinh hệ từ xa, học tập tiết kiệm thời gian và chi phí bằng cử nhân do Bộ Giáo dục cấp"
         }
       />

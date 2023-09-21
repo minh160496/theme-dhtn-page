@@ -16,7 +16,7 @@ const Page = () => {
     <>
       <NextSeo
         title="Lịch khải Giảng - Đại học Thái Nguyên"
-        description="Lịch khải giảng hệ đào tạo từ xa trường Đại học Thái nguyên - hệ đại học từ xa"
+        description="Lịch khải giảng hệ đào tạo từ xa Đại học Thái nguyên - hệ đại học từ xa"
       />
       <LichKg />
     </>

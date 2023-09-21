@@ -1,7 +1,9 @@
+"server only";
+
 import ErrorBoundary from "@/components/ErrorBoundary";
-import { Loading } from "@/components/Loading";
-import { Home } from "@/features/home";
+import { LatestPost } from "@/features/latestPost";
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
@@ -9,7 +11,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get all categories
     const resCats = await fetch(`${api_url}/categories`, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 5 },
     });
     const cats: any[] = (await resCats.json()) || [];
     const newCat = cats?.find((cat) => cat.name === "tin-tuc");
@@ -19,13 +21,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get posts category==='tin-tuc'
     const resNews = await fetch(
-      `${api_url}/posts?_embed&per_page=3&status=publish&page=${1}&categories=${idNew}`,
+      `${api_url}/posts?_embed&per_page=9&status=publish&page=${1}&categories=${idNew}`,
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 5 },
       }
     );
     const totalNews = resNews.headers.get("X-WP-Total");
-    const news = (await resNews?.json()) || [];
+    const news: any[] = (await resNews?.json()) || [];
     const newsWithFeaturedImages: any[] = news?.map((post: any) => {
       const featured_image =
         post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
@@ -36,59 +38,40 @@ export const getStaticProps: GetStaticProps = async () => {
       };
     });
 
-    //get posts category==='thong-bao'
-    const resNotifis = await fetch(
-      `${api_url}/posts?_embed&per_page=3&status=publish&page=${1}&categories=${idNotifi}`,
-      {
-        next: { revalidate: 1800 },
-      }
-    );
-    const totalNotifis = resNotifis.headers.get("X-WP-Total");
-    const notifis: any[] = (await resNotifis?.json()) || [];
-    const motifisWithFeaturedImages: any[] = notifis?.map((notifi: any) => {
-      const featured_image =
-        notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
-
-      return {
-        ...notifi,
-        featured_image,
-      };
-    });
     return {
       props: {
         news: newsWithFeaturedImages || [],
-        notifis: motifisWithFeaturedImages || [],
         totalNews: totalNews || "0",
-        totalNotifis: totalNotifis || "0",
       },
-      revalidate: 1800,
+      revalidate: 5,
     };
   } catch (error) {
     console.log(error);
     return {
       props: {
         news: [],
-        notifis: [],
         totalNews: "0",
-        totalNotifis: "0",
       },
     };
   }
 };
 
-interface IHomepage {
+interface IPostspage {
   news: any[];
   totalNews: string;
-  notifis: any[];
-  totalNotifis: string;
 }
 
-const Page = (props: IHomepage) => {
-  const { news, notifis } = props;
+const Page = (props: IPostspage) => {
+  const { news } = props;
+
   return (
     <>
-      <ErrorBoundary fallback={<Loading />}>
-        <Home news={news || []} notifis={notifis || []} />
+      <NextSeo
+        title="Tin tức tuyển sinh mới nhất - Đại học Thái Nguyên"
+        description="Đại học Thái Nguyên tuyển sinh năm 2023 - tổng hợp các tin tức tuyển sinh mới nhất của Đại học Thái Nguyên"
+      />
+      <ErrorBoundary fallback={<h1>Lỗi server</h1>}>
+        <LatestPost posts={news} />
       </ErrorBoundary>
     </>
   );

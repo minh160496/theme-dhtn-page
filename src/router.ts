@@ -59,7 +59,7 @@ export const menus = [
     title: "Đăng ký",
   },
   {
-    path: "/tin-tuc", // the url
+    path: "tin-tuc", // the url
     title: "Tin tức", // view rendered
   },
 ];
