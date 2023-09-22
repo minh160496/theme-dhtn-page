@@ -17,9 +17,9 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       next: { revalidate: 1800 },
     });
     const cats: any[] = (await resCats.json()) || [];
-    const newCat = cats?.find((cat) => cat.name === "tin-tuc");
+    const newCat = cats?.find((cat) => cat.name === "Tin Tức");
     const idNew = newCat?.id;
-    const notifiCat = cats?.find((cat) => cat.name === "thong-bao");
+    const notifiCat = cats?.find((cat) => cat.name === "Thông báo");
     const idNotifi = notifiCat?.id;
 
     //get posts category==='tin-tuc'

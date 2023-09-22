@@ -14,10 +14,8 @@ export const getStaticProps: GetStaticProps = async () => {
       next: { revalidate: 5 },
     });
     const cats: any[] = (await resCats.json()) || [];
-    const newCat = cats?.find((cat) => cat.name === "tin-tuc");
+    const newCat = cats?.find((cat) => cat.name === "Tin Tức");
     const idNew = newCat?.id;
-    const notifiCat = cats?.find((cat) => cat.name === "thong-bao");
-    const idNotifi = notifiCat?.id;
 
     //get posts category==='tin-tuc'
     const resNews = await fetch(
