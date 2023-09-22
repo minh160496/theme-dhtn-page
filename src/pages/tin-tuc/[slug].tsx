@@ -63,10 +63,10 @@ const Page = (props: IPostPage) => {
     <>
       <NextSeo
         title={
-          post.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
+          post?.title?.rendered || "Đại học Thái Nguyên - tuyển sinh hệ từ xa"
         }
         description={
-          post.excerpt?.rendered ||
+          post?.excerpt?.rendered ||
           "Đại học Thái Nguyên - tuyển sinh hệ từ xa, học tập tiết kiệm thời gian và chi phí bằng cử nhân do Bộ Giáo dục cấp"
         }
       />

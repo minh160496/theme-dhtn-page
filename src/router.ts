@@ -52,14 +52,14 @@ export const menus = [
   },
   {
     path: "/lich-khai-giang", // the url
-    title: "Khai giảng",
+    title: "Lịch khai giảng",
   },
   {
-    path: "/dang-ky", // the url
-    title: "Đăng ký",
+    path: "/lien-he", // the url
+    title: "Liên hệ",
   },
   {
-    path: "tin-tuc", // the url
+    path: "/tin-tuc", // the url
     title: "Tin tức", // view rendered
   },
 ];

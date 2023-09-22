@@ -23,6 +23,9 @@ const Categorys = dynamic(
 const Benefit = dynamic(() => import("./Benefit").then((mod) => mod.Benefit), {
   loading: () => <Loading />,
 });
+const Notify = dynamic(() => import("./Notify").then((mod) => mod.Notify), {
+  loading: () => <Loading />,
+});
 const Contact = dynamic(() => import("./Contact").then((mod) => mod.Contact), {
   loading: () => <Loading />,
 });
@@ -67,7 +70,9 @@ export const Home = ({ news, notifis }: { news: any[]; notifis: any[] }) => {
       </Box>
       <Categorys />
       <Benefit />
-      <Motto />
+      <Box py={"62px"}>
+        <Notify />
+      </Box>
       <Support />
       <Counters />
       <Review />
