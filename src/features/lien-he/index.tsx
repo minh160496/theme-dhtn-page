@@ -14,16 +14,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { GrLocation, GrMapLocation } from "react-icons/gr";
-import {
-  MdEmail,
-  MdLocalActivity,
-  MdMap,
-  MdOutlineMailOutline,
-  MdPhone,
-} from "react-icons/md";
+import { MdMap, MdOutlineMailOutline, MdPhone } from "react-icons/md";
 
-export const Dangky = () => {
+export const Lienhe = () => {
   return (
     <>
       <Box bg="radial-gradient(circle, rgba(5,70,89,1) 2%, rgba(98,212,245,1) 100%, rgba(252,89,52,1) 100%)">
@@ -43,7 +36,7 @@ export const Dangky = () => {
         bg={"linear-gradient(180deg, rgba(255, 255, 255, 1), #D6F5FE 100%)"}
         color={"blue.800"}
       >
-        <Container maxW={"6xl"} py="120px">
+        <Container maxW={"6xl"} py="60px">
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"16px"}>
             <GridItem border={"1px solid"} borderColor={"gray.400"} p={"16px"}>
               <Heading

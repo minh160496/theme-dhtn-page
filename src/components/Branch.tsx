@@ -1,32 +1,28 @@
 "use client";
 
 import {
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionPanel,
   Box,
   Circle,
+  Divider,
   GridItem,
+  HStack,
+  Heading,
+  Icon,
   ListItem,
   SimpleGrid,
+  Text,
   UnorderedList,
   VStack,
 } from "@chakra-ui/react";
-import {
-  Heading,
-  HStack,
-  Icon,
-  Text,
-  Divider,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-} from "@chakra-ui/react";
-import { LiaUniversitySolid } from "react-icons/lia";
-import { PiStudent } from "react-icons/pi";
-import { BsLaptop, BsBook, BsCheck2Circle } from "react-icons/bs";
-import { PiExam } from "react-icons/pi";
-import { GrOverview } from "react-icons/gr";
 import { BiPlus } from "react-icons/bi";
+import { BsBook, BsCheck2Circle, BsLaptop } from "react-icons/bs";
+import { GrOverview } from "react-icons/gr";
+import { LiaUniversitySolid } from "react-icons/lia";
+import { PiExam, PiStudent } from "react-icons/pi";
 
 interface IBranch {
   name: string;
@@ -40,14 +36,6 @@ interface IBranch {
       content: string;
     }[];
   };
-
-  info: {
-    title: string;
-    detail: {
-      title: string;
-      list: string[];
-    }[];
-  }[];
 }
 
 export const Accs = ({
@@ -97,7 +85,7 @@ export const Accs = ({
 };
 
 export const Branch = (props: IBranch) => {
-  const { name, overview, jobs, program, info } = props;
+  const { name, overview, jobs, program } = props;
   return (
     <Box color={"blue.800"}>
       <Heading
