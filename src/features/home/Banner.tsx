@@ -74,10 +74,11 @@ export const Banner = () => {
       bgRepeat={"no-repeat"}
       bgSize={"cover"}
       py={"48px"}
+      h={"50vh"}
     >
       <MotionBanner>
         <Container maxW={"4xl"} py={12}>
-          <VStack spacing={4} p={"24px"} bg={"whiteAlpha.700"}>
+          {/* <VStack spacing={4} p={"24px"} bg={"white"} >
             <Center>
               <Text
                 textTransform={"uppercase"}
@@ -146,7 +147,7 @@ export const Banner = () => {
                 text={"Bằng cử nhân do Bộ Giáo dục và đào tạo công nhận"}
               />
             </Stack>
-          </VStack>
+          </VStack> */}
         </Container>
       </MotionBanner>
     </Box>

@@ -48,9 +48,7 @@ const ModalBase = dynamic(
 const Review = dynamic(() => import("./Review").then((mod) => mod.Review), {
   loading: () => <Loading />,
 });
-const Motto = dynamic(() => import("./Motto").then((mod) => mod.Motto), {
-  loading: () => <Loading />,
-});
+
 const Support = dynamic(() => import("./Support").then((mod) => mod.Support), {
   loading: () => <Loading />,
 });
@@ -65,7 +63,7 @@ export const Home = ({ news, notifis }: { news: any[]; notifis: any[] }) => {
   return (
     <>
       <Banner />
-      <Box pos={"sticky"} top={"92px"} zIndex={3}>
+      <Box>
         <TextScroll />
       </Box>
       <Categorys />
