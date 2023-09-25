@@ -27,6 +27,21 @@
 .post__main h4 {
   font-size: 1.1rem;
 }
+<<<<<<< HEAD
+=======
+.post__main li {
+  padding-bottom: 8px;
+}
+.post__main img {
+  display: block;
+  margin: 0 auto;
+}
+.post__main figcaption {
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: 8px;
+}
+>>>>>>> version-2
 
 .post__heading {
   border-bottom: 1px solid #ccc;

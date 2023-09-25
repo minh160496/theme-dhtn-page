@@ -14,9 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
       next: { revalidate: 5 },
     });
     const cats: any[] = (await resCats.json()) || [];
-    const newCat = cats?.find((cat) => cat.name === "tin-tuc");
-    const idNew = newCat?.id;
-    const notifiCat = cats?.find((cat) => cat.name === "thong-bao");
+    const notifiCat = cats?.find((cat) => cat.name === "Thông báo");
     const idNotifi = notifiCat?.id;
 
     //get posts category==='thong-bao'
@@ -28,15 +26,18 @@ export const getStaticProps: GetStaticProps = async () => {
     );
     const totalNotifis = resNotifis.headers.get("X-WP-Total");
     const notifis: any[] = (await resNotifis?.json()) || [];
-    const motifisWithFeaturedImages: any[] = notifis?.map((notifi: any) => {
-      const featured_image =
-        notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+    const motifisWithFeaturedImages: any[] =
+      notifis?.length > 0
+        ? notifis?.map((notifi: any) => {
+            const featured_image =
+              notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
 
-      return {
-        ...notifi,
-        featured_image,
-      };
-    });
+            return {
+              ...notifi,
+              featured_image,
+            };
+          })
+        : [];
 
     return {
       props: {

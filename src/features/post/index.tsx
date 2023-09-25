@@ -1,11 +1,11 @@
 "only server";
 
+import styles from "@/styles/Post.module.css";
 import { formatDate } from "@/ultil/date";
 import Link from "next/link";
 import xss from "xss";
 import { SamePosts } from "./Sames";
 import { Share } from "./Share";
-import styles from "@/styles/Post.module.css";
 
 export const Post = ({
   post,

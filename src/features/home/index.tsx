@@ -23,6 +23,9 @@ const Categorys = dynamic(
 const Benefit = dynamic(() => import("./Benefit").then((mod) => mod.Benefit), {
   loading: () => <Loading />,
 });
+const Notify = dynamic(() => import("./Notify").then((mod) => mod.Notify), {
+  loading: () => <Loading />,
+});
 const Contact = dynamic(() => import("./Contact").then((mod) => mod.Contact), {
   loading: () => <Loading />,
 });
@@ -45,9 +48,7 @@ const ModalBase = dynamic(
 const Review = dynamic(() => import("./Review").then((mod) => mod.Review), {
   loading: () => <Loading />,
 });
-const Motto = dynamic(() => import("./Motto").then((mod) => mod.Motto), {
-  loading: () => <Loading />,
-});
+
 const Support = dynamic(() => import("./Support").then((mod) => mod.Support), {
   loading: () => <Loading />,
 });
@@ -62,12 +63,14 @@ export const Home = ({ news, notifis }: { news: any[]; notifis: any[] }) => {
   return (
     <>
       <Banner />
-      <Box pos={"sticky"} top={"92px"} zIndex={3}>
+      <Box>
         <TextScroll />
       </Box>
       <Categorys />
       <Benefit />
-      <Motto />
+      <Box py={"62px"}>
+        <Notify />
+      </Box>
       <Support />
       <Counters />
       <Review />
