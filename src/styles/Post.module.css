@@ -27,6 +27,10 @@
 .post__main h4 {
   font-size: 1.1rem;
 }
+.post__main img {
+  display: block;
+  margin: 0 auto;
+}
 
 .post__heading {
   border-bottom: 1px solid #ccc;
