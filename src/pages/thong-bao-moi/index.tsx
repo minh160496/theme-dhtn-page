@@ -26,15 +26,18 @@ export const getStaticProps: GetStaticProps = async () => {
     );
     const totalNotifis = resNotifis.headers.get("X-WP-Total");
     const notifis: any[] = (await resNotifis?.json()) || [];
-    const motifisWithFeaturedImages: any[] = notifis?.map((notifi: any) => {
-      const featured_image =
-        notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+    const motifisWithFeaturedImages: any[] =
+      notifis?.length > 0
+        ? notifis?.map((notifi: any) => {
+            const featured_image =
+              notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
 
-      return {
-        ...notifi,
-        featured_image,
-      };
-    });
+            return {
+              ...notifi,
+              featured_image,
+            };
+          })
+        : [];
 
     return {
       props: {

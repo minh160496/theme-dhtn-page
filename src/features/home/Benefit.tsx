@@ -4,7 +4,6 @@ import { HeadSection } from "@/components/HeadSection";
 import {
   As,
   Box,
-  Button,
   Container,
   HStack,
   Heading,
@@ -59,9 +58,9 @@ export const Item = ({
             {desc}
           </Text>
 
-          <Button variant={"link"} color={"#004956"}>
+          {/* <Button variant={"link"} color={"#004956"}>
             Xem chi tiết
-          </Button>
+          </Button> */}
         </VStack>
       </HStack>
     </Box>

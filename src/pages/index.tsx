@@ -25,16 +25,19 @@ export const getStaticProps: GetStaticProps = async () => {
       }
     );
     const totalNews = resNews.headers.get("X-WP-Total");
-    const news = (await resNews?.json()) || [];
-    const newsWithFeaturedImages: any[] = news?.map((post: any) => {
-      const featured_image =
-        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+    const news: any[] = (await resNews?.json()) || [];
+    const newsWithFeaturedImages: any[] =
+      news?.length > 0
+        ? news?.map((post: any) => {
+            const featured_image =
+              post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
 
-      return {
-        ...post,
-        featured_image,
-      };
-    });
+            return {
+              ...post,
+              featured_image,
+            };
+          })
+        : [];
 
     //get posts category==='thong-bao'
     const resNotifis = await fetch(
@@ -45,19 +48,22 @@ export const getStaticProps: GetStaticProps = async () => {
     );
     const totalNotifis = resNotifis.headers.get("X-WP-Total");
     const notifis: any[] = (await resNotifis?.json()) || [];
-    const motifisWithFeaturedImages: any[] = notifis?.map((notifi: any) => {
-      const featured_image =
-        notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
+    const notifisWithFeaturedImages: any[] =
+      notifis?.length > 0
+        ? notifis?.map((notifi: any) => {
+            const featured_image =
+              notifi._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
 
-      return {
-        ...notifi,
-        featured_image,
-      };
-    });
+            return {
+              ...notifi,
+              featured_image,
+            };
+          })
+        : [];
     return {
       props: {
         news: newsWithFeaturedImages || [],
-        notifis: motifisWithFeaturedImages || [],
+        notifis: notifisWithFeaturedImages || [],
         totalNews: totalNews || "0",
         totalNotifis: totalNotifis || "0",
       },
