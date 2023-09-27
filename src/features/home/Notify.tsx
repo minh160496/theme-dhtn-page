@@ -1,22 +1,23 @@
+import { HeadSection } from "@/components/HeadSection";
 import {
-  SimpleGrid,
-  GridItem,
   Accordion,
   AccordionButton,
   AccordionItem,
   AccordionPanel,
   Box,
-  HStack,
-  Icon,
-  Heading,
-  UnorderedList,
-  ListItem,
-  Text,
   Container,
+  GridItem,
+  HStack,
+  Heading,
+  Icon,
+  ListItem,
+  SimpleGrid,
+  Text,
+  UnorderedList,
 } from "@chakra-ui/react";
-import { BiPlus } from "react-icons/bi";
 import Image from "next/image";
-import { HeadSection } from "@/components/HeadSection";
+import { useEffect, useState } from "react";
+import { BiPlus } from "react-icons/bi";
 
 export const Accs = ({
   accs,
@@ -64,7 +65,7 @@ export const Accs = ({
   );
 };
 
-const info = [
+const infoInit = [
   {
     title: "Đối tượng tuyển sinh",
     detail: [
@@ -164,6 +165,38 @@ const info = [
 ];
 
 export const Notify = () => {
+  const [info, setInfo] = useState<{ title: string; detail: any }[]>(infoInit);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getLichKg = async () => {
+      try {
+        const res = await fetch("/api/data-lichKg");
+        const data = await res.json();
+        const listKg: string[] = data?.list || [];
+
+        const newInfo = [...info];
+        newInfo[3] = {
+          title: newInfo[3].title,
+          detail: [
+            {
+              title: "Trạm tuyển sinh Đại học Thái Nguyên:",
+              list: listKg,
+            },
+          ],
+        };
+
+        info?.length > 0 && setInfo(newInfo);
+      } catch (error) {
+        console.log(error);
+      }
+
+      setIsLoading(false);
+    };
+
+    getLichKg();
+  }, [info, isLoading]);
+
   return (
     <Container maxW={"6xl"}>
       <HeadSection
