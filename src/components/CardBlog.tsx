@@ -68,7 +68,7 @@ export const CardBlog = ({
             <Image
               width={600}
               height={350}
-              src={image || `/blog.jpg`}
+              src={image || `/blog.jpeg`}
               style={{ maxHeight: imageH }}
               alt={title}
             />

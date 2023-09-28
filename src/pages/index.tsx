@@ -9,7 +9,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get all categories
     const resCats = await fetch(`${api_url}/categories`, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 3 },
     });
     const cats: any[] = (await resCats.json()) || [];
     const newCat = cats?.find((cat) => cat.name === "Tin Tức");
@@ -19,9 +19,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get posts category==='tin-tuc'
     const resNews = await fetch(
-      `${api_url}/posts?_embed&per_page=3&status=publish&page=${1}&categories=${idNew}`,
+      `${api_url}/posts?_embed&per_page=2&status=publish&page=${1}&categories=${idNew}`,
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 3 },
       }
     );
     const totalNews = resNews.headers.get("X-WP-Total");
@@ -41,9 +41,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get posts category==='thong-bao'
     const resNotifis = await fetch(
-      `${api_url}/posts?_embed&per_page=3&status=publish&page=${1}&categories=${idNotifi}`,
+      `${api_url}/posts?_embed&per_page=2&status=publish&page=${1}&categories=${idNotifi}`,
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 3 },
       }
     );
     const totalNotifis = resNotifis.headers.get("X-WP-Total");
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async () => {
         totalNews: totalNews || "0",
         totalNotifis: totalNotifis || "0",
       },
-      revalidate: 1800,
+      revalidate: 3,
     };
   } catch (error) {
     console.log(error);

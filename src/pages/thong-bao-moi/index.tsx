@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get all categories
     const resCats = await fetch(`${api_url}/categories`, {
-      next: { revalidate: 5 },
+      next: { revalidate: 1 },
     });
     const cats: any[] = (await resCats.json()) || [];
     const notifiCat = cats?.find((cat) => cat.name === "Thông báo");
@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const resNotifis = await fetch(
       `${api_url}/posts?_embed&per_page=9&status=publish&page=${1}&categories=${idNotifi}`,
       {
-        next: { revalidate: 5 },
+        next: { revalidate: 1 },
       }
     );
     const totalNotifis = resNotifis.headers.get("X-WP-Total");

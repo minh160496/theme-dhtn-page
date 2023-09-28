@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 
     //get all categories
     const resCats = await fetch(`${api_url}/categories`, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 3 },
     });
     const cats: any[] = (await resCats.json()) || [];
     const newCat = cats?.find((cat) => cat.name === "Tin Tức");
@@ -26,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     const resNews = await fetch(
       `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}&categories=${idNew}`,
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 3 },
       }
     );
     const totalNews = resNews.headers.get("X-WP-Total");
@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     const resNotifis = await fetch(
       `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}&categories=${idNotifi}`,
       {
-        next: { revalidate: 1800 },
+        next: { revalidate: 3 },
       }
     );
     const totalNotifis = resNotifis.headers.get("X-WP-Total");

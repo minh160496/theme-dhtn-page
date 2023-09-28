@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
     //get all categories
     const resCats = await fetch(`${api_url}/categories`, {
-      next: { revalidate: 5 },
+      next: { revalidate: 1 },
     });
     const cats: any[] = (await resCats.json()) || [];
     const newCat = cats?.find((cat) => cat.name === "Tin Tức");
@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const resNews = await fetch(
       `${api_url}/posts?_embed&per_page=9&status=publish&page=${1}&categories=${idNew}`,
       {
-        next: { revalidate: 5 },
+        next: { revalidate: 1 },
       }
     );
     const totalNews = resNews.headers.get("X-WP-Total");
@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
         news: newsWithFeaturedImages || [],
         totalNews: totalNews || "0",
       },
-      revalidate: 5,
+      revalidate: 1,
     };
   } catch (error) {
     console.log(error);
