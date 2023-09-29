@@ -1,26 +1,23 @@
 "use client";
 
 import {
-  Button,
+  Heading,
   IconButton,
   IconButtonProps,
-  Tooltip,
   Popover,
-  PopoverTrigger,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
   PopoverContent,
   PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
-  Heading,
+  PopoverTrigger,
+  Tooltip,
 } from "@chakra-ui/react";
 import { BiPhone } from "react-icons/bi";
 import { BsMessenger } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { SiZalo } from "react-icons/si";
-import { FormGetFly1, FormGetFly2 } from "./FormContact";
+import { FormPoup } from "./FormContact";
 
 export const BtnPhone = (props: IconButtonProps) => {
   return (
@@ -99,7 +96,7 @@ export const BtnEmail = (props: IconButtonProps) => {
           Để lại thông tin
         </PopoverHeader>
         <PopoverBody>
-          <FormGetFly1 />
+          <FormPoup />
         </PopoverBody>
       </PopoverContent>
     </Popover>

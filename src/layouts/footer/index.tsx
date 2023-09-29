@@ -1,5 +1,7 @@
 "use client";
 
+import { FormPoup } from "@/components/FormContact";
+import { ModalBase } from "@/components/Modal";
 import {
   Box,
   Container,
@@ -16,14 +18,11 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { FaFacebook, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaTiktok } from "react-icons/fa";
 import { InputRes } from "../../components/InputRes";
-import { Logo } from "../components/Logo";
-import { ModalBase } from "@/components/Modal";
-import { FormGetFly1 } from "@/components/FormContact";
-import Image from "next/image";
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
   return (
@@ -189,7 +188,7 @@ export const Footer = () => {
         </Box>
       </Box>
       <ModalBase isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-        <FormGetFly1 title="Để lại thông tin" />
+        <FormPoup title="Để lại thông tin" />
       </ModalBase>
     </>
   );
