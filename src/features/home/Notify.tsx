@@ -204,18 +204,22 @@ export const Notify = () => {
         subtitle="thông báo"
         desc="Thông báo tuyển sinh hệ từ xa Đại học Thái Nguyên 2023"
       />
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"32px"} pt={"24px"}>
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }}
+        spacing={"40px"}
+        pt={"40px"}
+      >
         <GridItem>
           <Accs accs={info} />
         </GridItem>
-        <GridItem>
+        <GridItem colSpan={2}>
           <Image
             src={"/phoi-bang-dh-thai-nguyen.jpg"}
             alt="Phôi bằng Đại học Thái Nguyên"
-            width={500}
-            height={700}
+            width={750}
+            height={404}
           />
-          <Text textAlign={"center"} fontWeight={"bold"}>
+          <Text textAlign={"center"} fontWeight={"bold"} pt={"24px"}>
             Phôi bằng Đại học Thái Nguyên
           </Text>
         </GridItem>
