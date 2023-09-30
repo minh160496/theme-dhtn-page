@@ -209,7 +209,7 @@ export const Notify = () => {
         columns={{ base: 1, md: 2, lg: 3 }}
         spacing={"40px"}
         pt={"40px"}
-        alignItems={"center"}
+    
       >
         <GridItem>
           <Accs accs={info} />
