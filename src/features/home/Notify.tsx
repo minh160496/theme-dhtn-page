@@ -14,6 +14,7 @@ import {
   SimpleGrid,
   Text,
   UnorderedList,
+  Center,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -34,7 +35,7 @@ export const Accs = ({
     <Accordion defaultIndex={[0]} allowMultiple>
       {accs.map((acc, index) => (
         <AccordionItem border={"none"} key={index} py={"12px"} rounded={"sm"}>
-          <AccordionButton bg={"gray.50"} py="16px" rounded={"sm"}>
+          <AccordionButton bg={"gray.200"} py="16px" rounded={"sm"}>
             <Box flex="1" textAlign="left">
               <HStack>
                 <Heading fontSize={{ base: "sm", md: "md" }}>
@@ -208,17 +209,21 @@ export const Notify = () => {
         columns={{ base: 1, md: 2, lg: 3 }}
         spacing={"40px"}
         pt={"40px"}
+        alignItems={"center"}
       >
         <GridItem>
           <Accs accs={info} />
         </GridItem>
         <GridItem colSpan={2}>
-          <Image
-            src={"/phoi-bang-dh-thai-nguyen.jpg"}
-            alt="Phôi bằng Đại học Thái Nguyên"
-            width={750}
-            height={404}
-          />
+          <Center>
+            <Image
+              src={"/phoi-bang-dh-thai-nguyen.jpg"}
+              alt="Phôi bằng Đại học Thái Nguyên"
+              width={600}
+              height={404}
+            />
+          </Center>
+
           <Text textAlign={"center"} fontWeight={"bold"} pt={"24px"}>
             Phôi bằng Đại học Thái Nguyên
           </Text>
