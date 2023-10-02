@@ -207,7 +207,7 @@ export const Notify = () => {
       />
       <SimpleGrid
         columns={{ base: 1, md: 1, lg: 3 }}
-        spacing={"24px"}
+        // spacing={"24px"}
         pt={"40px"}    
       >
         <GridItem >       
