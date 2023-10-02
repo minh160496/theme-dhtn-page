@@ -12,6 +12,7 @@ import {
   Text,
   UnorderedList,
   VStack,
+  Center,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { MdMap, MdOutlineMailOutline, MdPhone } from "react-icons/md";
@@ -37,7 +38,7 @@ export const Lienhe = () => {
         color={"blue.800"}
       >
         <Container maxW={"6xl"} py="50px">
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={"8px"}>
+          <SimpleGrid columns={{ base: 1, md: 1, lg: 3 }} spacing={"8px"}>
             <GridItem
               colSpan={2}
               bgColor={"white"}
@@ -179,7 +180,9 @@ export const Lienhe = () => {
               ml={"16px"}
               p={"16px"}
             >
-              <FormGetFly2 title="Vui lòng điền thông tin" />
+              <Center>
+                <FormGetFly2 title="Vui lòng điền thông tin" />
+              </Center>
             </GridItem>
             {/* <GridItem colSpan={{ base: 1, md: 2 }}></GridItem> */}
           </SimpleGrid>

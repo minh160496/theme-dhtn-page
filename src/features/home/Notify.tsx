@@ -206,13 +206,12 @@ export const Notify = () => {
         desc="Thông báo tuyển sinh hệ từ xa Đại học Thái Nguyên 2023"
       />
       <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3 }}
-        spacing={"40px"}
-        pt={"40px"}
-    
+        columns={{ base: 1, md: 1, lg: 3 }}
+        spacing={"24px"}
+        pt={"40px"}    
       >
-        <GridItem>
-          <Accs accs={info} />
+        <GridItem >       
+              <Accs accs={info} />            
         </GridItem>
         <GridItem colSpan={2}>
           <Center>
