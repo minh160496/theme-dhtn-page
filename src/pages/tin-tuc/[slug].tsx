@@ -7,58 +7,34 @@ import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { ReactElement } from "react";
 
-const api_url = process.env.API_URL || "";
-
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const api_url = process.env.API_URL || "";
   try {
     const params = context.params;
     const slug = params?.slug || "";
     const res = await fetch(`${api_url}/posts?slug=${slug}`, {
-      next: { revalidate: 3 },
+      next: { revalidate: 3600 },
     });
     const posts = await res.json();
     const post = posts ? posts[0] : null;
-    const categoryId = post?.categories[0] || null; // Giả sử mỗi bài viết chỉ thuộc về một thể loại
-
-    let postsWithFeaturedImages: any[] = [];
-    if (categoryId) {
-      // Lấy danh sách các bài viết cùng thể loại
-      const resRelatedPosts = await fetch(
-        `${api_url}/posts?categories=${categoryId}&exclude=${post?.id}&per_page=3&_embed`,
-        { next: { revalidate: 3 } }
-      );
-
-      const relatedPosts: any[] = await resRelatedPosts.json();
-
-      postsWithFeaturedImages = relatedPosts?.map((relatedPost: any) => {
-        const featured_image =
-          relatedPost._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null;
-
-        return {
-          ...relatedPost,
-          featured_image,
-        };
-      });
-    }
 
     return {
-      props: { post: post || null, samePosts: postsWithFeaturedImages || [] },
+      props: { post: post || null },
     };
   } catch (error) {
     console.log(error);
     return {
-      props: { post: null, samePosts: [] },
+      props: { post: null },
     };
   }
 };
 
 interface IPostPage {
   post: any;
-  samePosts: any[];
 }
 
 const Page = (props: IPostPage) => {
-  const { post, samePosts } = props;
+  const { post } = props;
   return (
     <>
       <NextSeo
@@ -71,7 +47,7 @@ const Page = (props: IPostPage) => {
         }
       />
       <ErrorBoundary fallback={<h1>Lỗi phía máy chủ</h1>}>
-        <Post post={post} relatedPosts={samePosts} />
+        <Post post={post} />
       </ErrorBoundary>
     </>
   );
