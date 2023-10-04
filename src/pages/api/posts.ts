@@ -28,15 +28,15 @@ export default async function handler(
     const idNew = 4;
     // const notifiCat = cats?.find((cat) => cat.name === "Thông báo");
     const idNotifi = 3;
-    const id = type === "news" ? idNew : idNotifi;
+    const id = type === "news" ? idNew : type === "notifis" ? idNotifi : null;
+    const endPoint = id
+      ? `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}&categories=${id}`
+      : `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}`;
 
     //get posts category==='tin-tuc'
-    const res = await fetch(
-      `${api_url}/posts?_embed&per_page=10&status=publish&page=${page}&categories=${id}`,
-      {
-        next: { revalidate: 1800 },
-      }
-    );
+    const res = await fetch(endPoint, {
+      next: { revalidate: 1 },
+    });
     totalPosts = res.headers?.get("X-WP-Total") || "0";
 
     const postsNotFeatureImage: any[] = (await res?.json()) || [];

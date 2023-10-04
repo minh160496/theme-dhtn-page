@@ -2,12 +2,39 @@
 
 import { CardBlog } from "@/components/CardBlog";
 import { HeadSection } from "@/components/HeadSection";
+import { Loading } from "@/components/Loading";
 import { formatDate } from "@/ultil/date";
 import { Box, Center, Container, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import xss from "xss";
 
-export const LatestPost = ({ posts }: { posts?: any[] }) => {
-  if (!posts || posts?.length === 0)
+export const LatestPost = () => {
+  const [posts, setPosts] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getPosts = async () => {
+      setIsLoading(true);
+      try {
+        const res = await fetch(`/api/posts/?page=${1}`, {
+          next: { revalidate: 3 },
+        });
+
+        const data: { posts: any[]; totalPosts: string } = await res.json();
+        const { posts } = data;
+        posts?.length && setPosts(posts);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
+    };
+
+    getPosts();
+  }, []);
+
+  if (isLoading) return <Loading he="50vh" />;
+
+  if (posts?.length === 0)
     return (
       <Container maxW={"6xl"} py={{ base: "32px", md: "48px" }}>
         <Center minH={"50vh"}>Không có bài viết nào mới xuất bản</Center>
